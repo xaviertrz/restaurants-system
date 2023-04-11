@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Restaurants from "./views/Restaurants";
+import CrearRestaurante from "./views/CrearRestaurante";
+import Reservacion from "./views/Reservacion";
+import Reservas from "./views/Reservas";
+
+import "./App.css";
+import RestauranteAReservar from "./views/RestauranteAReservar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Restaurants />}></Route>
+          <Route path="/restaurantes/" element={<CrearRestaurante />}></Route>
+          <Route
+            path="/restaurantes/:id"
+            element={<CrearRestaurante />}
+          ></Route>
+          <Route path="/reservar-mesa/:id" element={<Reservacion />}></Route>
+          <Route path="/reservas" element={<Reservas />}></Route>
+          <Route
+            path="/elegir-restaurante"
+            element={<RestauranteAReservar />}
+          ></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
